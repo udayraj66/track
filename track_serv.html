@@ -1,0 +1,856 @@
+<!doctype html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Poppins, sans-serif;
+        background: #fffdfb;
+        color: #141414;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 25px;
+      }
+
+
+      header {
+        background: #f9c7a9;
+        padding: 25px 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: Montserrat, sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+
+      .logo small {
+        display: block;
+        font:
+          9px Poppins,
+          sans-serif;
+        letter-spacing: 2px;
+        color: #555;
+        margin-top: 4px;
+      }
+
+      nav a {
+        color: #141414;
+        text-decoration: none;
+        margin-left: 28px;
+        font-size: 13px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #e0562f;
+      }
+
+
+      .hero {
+        background: linear-gradient(135deg, #fffdfb 0%, #fce0cc 100%);
+        padding: 85px 0 75px;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 760px;
+        margin: auto;
+      }
+
+      .hero-tag {
+        display: inline-block;
+        background: #2a0f1e;
+        color: #fff;
+        padding: 7px 18px;
+        border-radius: 30px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 {
+        font:
+          800 48px Montserrat,
+          sans-serif;
+        text-transform: uppercase;
+        line-height: 1.1;
+        margin-bottom: 18px;
+      }
+
+      .hero h1 span {
+        color: #e0562f;
+      }
+
+      .hero p {
+        color: #666;
+        font-size: 15px;
+        max-width: 650px;
+        margin: auto;
+      }
+
+      .orange-line {
+        width: 55px;
+        height: 4px;
+        background: #ff8a4c;
+        border-radius: 5px;
+        margin: 25px auto 0;
+      }
+
+
+      .services {
+        padding: 80px 0;
+        background: #fffdfb;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font:
+          800 32px Montserrat,
+          sans-serif;
+        text-transform: uppercase;
+      }
+
+      .section-title p {
+        color: #777;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+      }
+
+      .service-card {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 35px rgba(42, 15, 30, 0.07);
+        transition: 0.35s ease;
+        position: relative;
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 45px rgba(42, 15, 30, 0.14);
+      }
+
+      .card-top {
+        height: 170px;
+        background: linear-gradient(135deg, #2a0f1e, #5a2639);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-top::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+      }
+
+      .card-top::after {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+      }
+
+      .icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: #f9c7a9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2a0f1e;
+        font-size: 32px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .card-content {
+        padding: 25px;
+      }
+
+      .card-content h3 {
+        font:
+          700 19px Montserrat,
+          sans-serif;
+        margin-bottom: 10px;
+      }
+
+      .card-content p {
+        color: #6d6d6d;
+        font-size: 13px;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .service-list {
+        list-style: none;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+      }
+
+      .service-list li {
+        font-size: 12px;
+        color: #555;
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 18px;
+      }
+
+      .service-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #e0562f;
+        font-weight: 700;
+      }
+
+      .card-btn {
+        display: inline-block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #2a0f1e;
+        font-size: 12px;
+        font-weight: 700;
+        border-bottom: 2px solid #ff8a4c;
+        padding-bottom: 3px;
+        transition: 0.3s;
+      }
+
+      .card-btn:hover {
+        color: #e0562f;
+      }
+
+      .experience {
+        background: #2a0f1e;
+        color: #fff;
+        padding: 80px 0;
+      }
+
+      .experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .experience-text .small-title {
+        color: #f9c7a9;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .experience-text h2 {
+        font:
+          800 36px Montserrat,
+          sans-serif;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .experience-text p {
+        color: #d3c7cc;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      .experience-btn {
+        display: inline-block;
+        background: #f9c7a9;
+        color: #2a0f1e;
+        text-decoration: none;
+        padding: 13px 23px;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 700;
+        transition: 0.3s;
+      }
+
+      .experience-btn:hover {
+        background: #ff8a4c;
+        color: #fff;
+      }
+
+      .feature-boxes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .feature-box {
+        background: #3b182a;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 25px 20px;
+        border-radius: 10px;
+      }
+
+      .feature-number {
+        font:
+          800 27px Montserrat,
+          sans-serif;
+        color: #f9c7a9;
+        margin-bottom: 5px;
+      }
+
+      .feature-box h4 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .feature-box p {
+        color: #bcaeb4;
+        font-size: 11px;
+      }
+
+      .process {
+        padding: 80px 0;
+        background: #fce0cc;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 45px;
+      }
+
+      .process-item {
+        background: #fff;
+        padding: 30px 20px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(42, 15, 30, 0.06);
+      }
+
+      .process-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 15px;
+        background: #2a0f1e;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      .process-item h3 {
+        font:
+          700 16px Montserrat,
+          sans-serif;
+        margin-bottom: 8px;
+      }
+
+      .process-item p {
+        color: #777;
+        font-size: 11px;
+      }
+
+
+      .cta {
+        padding: 75px 0;
+        background: #fffdfb;
+        text-align: center;
+      }
+
+      .cta-box {
+        max-width: 850px;
+        margin: auto;
+        background: linear-gradient(135deg, #f9c7a9, #f7b993);
+        border-radius: 15px;
+        padding: 55px 30px;
+        box-shadow: 0 20px 50px rgba(42, 15, 30, 0.12);
+      }
+
+      .cta-box h2 {
+        font:
+          800 31px Montserrat,
+          sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .cta-box p {
+        color: #5f514c;
+        font-size: 14px;
+        max-width: 600px;
+        margin: 0 auto 25px;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background: #2a0f1e;
+        color: #fff;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 5px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: #e0562f;
+      }
+
+
+      footer {
+        background: #141414;
+        color: #aaa;
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+      }
+
+      @media (max-width: 850px) {
+        .services-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .experience-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .process-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 650px) {
+        header {
+          padding: 20px 0;
+        }
+
+        nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        nav a {
+          margin: 0 7px;
+          font-size: 11px;
+        }
+
+        .hero {
+          padding: 65px 0;
+        }
+
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .hero p {
+          font-size: 13px;
+        }
+
+        .services {
+          padding: 60px 0;
+        }
+
+        .section-title h2 {
+          font-size: 25px;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .experience {
+          padding: 60px 0;
+        }
+
+        .experience-text h2 {
+          font-size: 28px;
+        }
+
+        .feature-boxes {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .process {
+          padding: 60px 0;
+        }
+
+        .process-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta {
+          padding: 60px 0;
+        }
+
+        .cta-box {
+          padding: 40px 20px;
+        }
+
+        .cta-box h2 {
+          font-size: 25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            HIGH PEAKS
+            <small>SPORTS AND NATURE</small>
+          </div>
+
+          <div>
+            <a href="track.html">HOME</a>
+            <a href="track_about.html">ABOUT</a>
+            <a href="track_f.html">BOOK NOW</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-tag">ADVENTURE • NATURE • EXPERIENCE</div>
+
+          <h1>Explore Our <span>Services</span></h1>
+
+          <p>
+            Discover unforgettable outdoor experiences with High Peaks. From
+            mountain adventures to peaceful nature escapes, we help you
+            experience the outdoors in a whole new way.
+          </p>
+
+          <div class="orange-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>What We Offer</h2>
+
+          <p>Choose your adventure and let us take care of the experience.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="card-top">
+              <div class="icon">⛰</div>
+            </div>
+
+            <div class="card-content">
+              <h3>Trekking & Mountaineering</h3>
+
+              <p>
+                Challenge yourself with breathtaking mountain trails, scenic
+                routes and unforgettable high-altitude experiences.
+              </p>
+
+              <ul class="service-list">
+                <li>Guided mountain trails</li>
+                <li>Beginner to advanced routes</li>
+                <li>Experienced adventure guides</li>
+                <li>Safety-focused planning</li>
+              </ul>
+
+              <a href="booking.html" class="card-btn"> BOOK ADVENTURE → </a>
+            </div>
+          </div>
+
+
+          <div class="service-card">
+            <div class="card-top">
+              <div class="icon">👨‍👩‍👧‍👦</div>
+            </div>
+
+            <div class="card-content">
+              <h3>Family & Group Tours</h3>
+
+              <p>
+                Create unforgettable memories with family, friends or colleagues
+                through carefully planned outdoor adventures.
+              </p>
+
+              <ul class="service-list">
+                <li>Custom group itineraries</li>
+                <li>Family-friendly activities</li>
+                <li>Flexible group sizes</li>
+                <li>Experienced coordinators</li>
+              </ul>
+
+              <a href="booking.html" class="card-btn"> PLAN YOUR TOUR → </a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-top">
+              <div class="icon">🚵</div>
+            </div>
+
+            <div class="card-content">
+              <h3>Mountain Biking</h3>
+
+              <p>
+                Ride through rugged trails, forest paths and spectacular
+                landscapes while enjoying an exciting outdoor experience.
+              </p>
+
+              <ul class="service-list">
+                <li>Scenic cycling routes</li>
+                <li>Trail-based adventures</li>
+                <li>Equipment guidance</li>
+                <li>Different difficulty levels</li>
+              </ul>
+
+              <a href="booking.html" class="card-btn"> RIDE WITH US → </a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-top">
+              <div class="icon">🌊</div>
+            </div>
+
+            <div class="card-content">
+              <h3>Rafting Adventures</h3>
+
+              <p>
+                Experience the rush of flowing rivers with exciting rafting
+                adventures designed for thrill seekers.
+              </p>
+
+              <ul class="service-list">
+                <li>River rafting experiences</li>
+                <li>Safety-first approach</li>
+                <li>Professional guidance</li>
+                <li>Group adventure options</li>
+              </ul>
+
+              <a href="booking.html" class="card-btn"> START RAFTING → </a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-top">
+              <div class="icon">⛺</div>
+            </div>
+
+            <div class="card-content">
+              <h3>Camping & Nature Escapes</h3>
+
+              <p>
+                Slow down, reconnect with nature and enjoy peaceful nights under
+                the stars away from the everyday routine.
+              </p>
+
+              <ul class="service-list">
+                <li>Nature camping</li>
+                <li>Scenic outdoor locations</li>
+                <li>Campfire experiences</li>
+                <li>Relaxed nature activities</li>
+              </ul>
+
+              <a href="booking.html" class="card-btn"> ESCAPE TO NATURE → </a>
+            </div>
+          </div>
+
+
+          <div class="service-card">
+            <div class="card-top">
+              <div class="icon">🧭</div>
+            </div>
+
+            <div class="card-content">
+              <h3>Custom Adventures</h3>
+
+              <p>
+                Have something different in mind? Build a personalized adventure
+                based on your interests, schedule and group.
+              </p>
+
+              <ul class="service-list">
+                <li>Personalized itineraries</li>
+                <li>Private adventures</li>
+                <li>Flexible schedules</li>
+                <li>Tailored experiences</li>
+              </ul>
+
+              <a href="booking.html" class="card-btn"> CREATE YOUR TRIP → </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience">
+      <div class="container">
+        <div class="experience-grid">
+          <div class="experience-text">
+            <div class="small-title">WHY HIGH PEAKS</div>
+
+            <h2>Adventure Designed Around Your Experience</h2>
+
+            <p>
+              At High Peaks, we believe an adventure should be more than simply
+              reaching a destination. It should be about discovering new places,
+              challenging yourself and creating memories that stay with you.
+            </p>
+
+            <a href="booking.html" class="experience-btn">
+              BOOK YOUR ADVENTURE
+            </a>
+          </div>
+
+          <div class="feature-boxes">
+            <div class="feature-box">
+              <div class="feature-number">01</div>
+              <h4>Experienced Guides</h4>
+              <p>Professional guidance throughout your adventure.</p>
+            </div>
+
+            <div class="feature-box">
+              <div class="feature-number">02</div>
+              <h4>Safety First</h4>
+              <p>Thoughtful planning focused on your outdoor experience.</p>
+            </div>
+
+            <div class="feature-box">
+              <div class="feature-number">03</div>
+              <h4>Flexible Plans</h4>
+              <p>Adventures designed around your group and schedule.</p>
+            </div>
+
+            <div class="feature-box">
+              <div class="feature-number">04</div>
+              <h4>Natural Experiences</h4>
+              <p>
+                Explore beautiful destinations and unforgettable landscapes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="section-title">
+          <h2>How It Works</h2>
+
+          <p>Your next adventure is just a few simple steps away.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-item">
+            <div class="process-icon">01</div>
+
+            <h3>Choose</h3>
+
+            <p>Select the adventure that matches your interests.</p>
+          </div>
+
+          <div class="process-item">
+            <div class="process-icon">02</div>
+
+            <h3>Plan</h3>
+
+            <p>Tell us your preferred dates, group size and requirements.</p>
+          </div>
+
+          <div class="process-item">
+            <div class="process-icon">03</div>
+
+            <h3>Prepare</h3>
+
+            <p>Our team helps you get ready for your outdoor experience.</p>
+          </div>
+
+          <div class="process-item">
+            <div class="process-icon">04</div>
+
+            <h3>Explore</h3>
+
+            <p>Enjoy your adventure and create unforgettable memories.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Ready For Your Next Adventure?</h2>
+
+          <p>
+            Tell us what kind of experience you're looking for and we'll help
+            you plan your perfect outdoor adventure.
+          </p>
+
+          <a href="booking.html" class="cta-btn"> BOOK YOUR ADVENTURE </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 High Peaks Sports and Nature. All rights reserved.
+    </footer>
+  </body>
+</html>

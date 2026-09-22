@@ -1,0 +1,194 @@
+<!doctype html>
+<html >
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,sans-serif;background:#fffdfb;color:#141414}
+.container{max-width:1100px;margin:auto;padding:0 25px}
+
+/* Header */
+header{
+  background:#f9c7a9;
+  padding:25px 0;
+}
+nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:Montserrat;font-size:20px;font-weight:800}
+.logo small{display:block;font:9px Poppins;letter-spacing:2px;color:#555}
+nav a{color:#141414;text-decoration:none;margin-left:28px;font-size:13px}
+
+/* Form Section */
+.booking{
+  min-height:calc(100vh - 100px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:70px 0;
+  background:
+    linear-gradient(135deg,#fffdfb,#fce0cc);
+}
+.form-box{
+  width:100%;
+  max-width:850px;
+  background:#fff;
+  padding:45px;
+  border-radius:12px;
+  box-shadow:0 20px 60px #2a0f1e22;
+}
+.title{text-align:center}
+.title h1{
+  font:800 38px Montserrat;
+  text-transform:uppercase;
+}
+.title p{
+  color:#6b6b6b;
+  margin-top:10px;
+  font-size:14px;
+}
+.line{
+  width:55px;height:4px;background:#ff8a4c;
+  margin:20px auto 35px;border-radius:5px
+}
+form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1/-1}
+label{
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:7px;
+}
+input,select,textarea{
+  width:100%;
+  padding:13px 15px;
+  border:1px solid #ddd;
+  border-radius:5px;
+  font:13px Poppins;
+  outline:none;
+  background:#fffdfb;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#e0562f;
+}
+textarea{height:100px;resize:none}
+button{
+  grid-column:1/-1;
+  border:0;
+  padding:15px;
+  background:#2a0f1e;
+  color:#fff;
+  font:600 14px Poppins;
+  cursor:pointer;
+  border-radius:5px;
+}
+button:hover{background:#e0562f}
+
+/* Footer */
+footer{
+  background:#141414;
+  color:#aaa;
+  text-align:center;
+  padding:20px;
+  font-size:12px;
+}
+
+@media(max-width:650px){
+  nav{flex-direction:column;gap:12px}
+  nav a{margin:0 8px}
+  .form-box{padding:30px 20px}
+  .title h1{font-size:28px}
+  form{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  button{grid-column:auto}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        HIGH PEAKS
+        <small>SPORTS AND NATURE</small>
+      </div>
+
+      <div>
+        <a href="track.html">HOME</a>
+        <a href="track_about.html">ABOUT</a>
+        <a href="track_serv.html">SERVICES</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="booking">
+  <div class="container">
+
+    <div class="form-box">
+      <div class="title">
+        <h1>Book Your Adventure</h1>
+        <p>Plan your next mountain experience with High Peaks.</p>
+      </div>
+
+      <div class="line"></div>
+
+      <form>
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" required>
+        </div>
+
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="field">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Enter phone number" required>
+        </div>
+
+        <div class="field">
+          <label>Adventure Type</label>
+          <select required>
+            <option value="">Select adventure</option>
+            <option>Trekking / Mountaineering</option>
+            <option>Family / Group Tour</option>
+            <option>Mountain Biking</option>
+            <option>Rafting</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Preferred Date</label>
+          <input type="date" required>
+        </div>
+
+        <div class="field">
+          <label>Number of People</label>
+          <input type="number" min="1" placeholder="No. of people" required>
+        </div>
+
+        <div class="field full">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your adventure plans..."></textarea>
+        </div>
+
+        <button type="submit">BOOK MY ADVENTURE</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 High Peaks Sports and Nature. All rights reserved.
+</footer>
+</body>
+</html>

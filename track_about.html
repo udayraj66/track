@@ -1,0 +1,1860 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --black: #141414;
+        --black-soft: #1d1a1c;
+
+        --cream: #fffaf6;
+        --cream-2: #f7eee8;
+
+        --peach: #f7c4a5;
+        --peach-light: #fce2d2;
+
+        --orange: #f47b42;
+        --orange-dark: #d9572d;
+
+        --maroon: #2a101f;
+        --maroon-light: #42172b;
+
+        --gray: #707070;
+        --gray-light: #e8e2de;
+
+        --white: #ffffff;
+
+        --container: 1320px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--black);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      .container {
+        width: min(100% - 100px, var(--container));
+        margin: auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+
+        padding: 28px 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0.4px;
+      }
+
+      .brand-name strong {
+        font-weight: 800;
+      }
+
+      .brand-subtitle {
+        margin-top: 5px;
+        font-size: 9px;
+        letter-spacing: 2.2px;
+        color: #666;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 38px;
+
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .nav a {
+        position: relative;
+        opacity: 0.75;
+        transition: 0.3s ease;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        opacity: 1;
+      }
+
+      .nav a:not(.nav-button)::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+
+        width: 0;
+        height: 2px;
+
+        background: var(--orange);
+
+        transition: 0.3s ease;
+      }
+
+      .nav a:hover::after,
+      .nav a.active::after {
+        width: 100%;
+      }
+
+      .nav-button {
+        padding: 12px 23px;
+
+        background: var(--black);
+        color: white;
+
+        border: 1px solid var(--black);
+
+        transition: 0.3s ease;
+      }
+
+      .nav-button:hover {
+        background: transparent;
+        color: var(--black);
+      }
+
+      .hero {
+        min-height: 790px;
+        position: relative;
+
+        display: flex;
+        align-items: center;
+
+        overflow: hidden;
+
+        background:
+          linear-gradient(
+            90deg,
+            rgba(255, 250, 246, 0.98) 0%,
+            rgba(255, 250, 246, 0.95) 34%,
+            rgba(255, 250, 246, 0.62) 58%,
+            rgba(255, 250, 246, 0.08) 100%
+          ),
+          url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90")
+            center/cover no-repeat;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 5;
+
+        max-width: 700px;
+
+        padding-top: 80px;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        color: #666;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+
+        width: 42px;
+        height: 2px;
+
+        background: var(--orange);
+      }
+
+      .hero h1 {
+        margin-top: 25px;
+
+        font-size: clamp(55px, 7vw, 94px);
+
+        line-height: 0.96;
+        letter-spacing: -3px;
+
+        text-transform: uppercase;
+      }
+
+      .hero h1 span {
+        color: var(--orange-dark);
+      }
+
+      .hero-description {
+        max-width: 570px;
+
+        margin-top: 30px;
+
+        color: #4e4e4e;
+
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        margin-top: 38px;
+
+        display: flex;
+        gap: 14px;
+      }
+
+      .button-dark,
+      .button-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 14px 27px;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        transition: 0.3s ease;
+      }
+
+      .button-dark {
+        background: var(--black);
+        color: white;
+        border: 1px solid var(--black);
+      }
+
+      .button-dark:hover {
+        background: transparent;
+        color: var(--black);
+      }
+
+      .button-outline {
+        border: 1px solid var(--black);
+      }
+
+      .button-outline:hover {
+        background: var(--black);
+        color: white;
+      }
+
+      .hero-circle {
+        position: absolute;
+
+        width: 430px;
+        height: 430px;
+
+        border-radius: 50%;
+
+        background: var(--peach);
+
+        right: 14%;
+        top: 30%;
+
+        opacity: 0.72;
+      }
+
+      .birds {
+        position: absolute;
+
+        width: 210px;
+
+        right: 24%;
+        top: 29%;
+
+        z-index: 2;
+      }
+
+      .hero-number {
+        position: absolute;
+
+        right: 50px;
+        bottom: 30px;
+
+        font-family: "Montserrat", sans-serif;
+
+        font-size: 120px;
+        font-weight: 800;
+
+        color: rgba(20, 20, 20, 0.07);
+      }
+
+      .intro {
+        padding: 125px 0;
+
+        background: var(--cream);
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 100px;
+
+        align-items: center;
+      }
+
+      .photo-frame {
+        position: relative;
+      }
+
+      .photo-frame::before {
+        content: "";
+
+        position: absolute;
+
+        left: -20px;
+        top: 20px;
+
+        width: 100%;
+        height: 100%;
+
+        border: 2px solid var(--peach);
+
+        z-index: 0;
+      }
+
+      .photo-frame img {
+        position: relative;
+        z-index: 2;
+
+        height: 570px;
+
+        object-fit: cover;
+
+        border-radius: 5px;
+      }
+
+      .photo-label {
+        position: absolute;
+
+        right: -25px;
+        bottom: 30px;
+
+        z-index: 4;
+
+        padding: 20px 25px;
+
+        background: var(--black);
+        color: white;
+
+        min-width: 170px;
+      }
+
+      .photo-label strong {
+        display: block;
+
+        font-family: "Montserrat", sans-serif;
+
+        font-size: 30px;
+      }
+
+      .photo-label span {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: #aaa;
+      }
+
+      .section-tag {
+        color: #777;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .section-tag::before {
+        content: "";
+
+        display: inline-block;
+
+        vertical-align: middle;
+
+        width: 40px;
+        height: 2px;
+
+        margin-right: 12px;
+
+        background: var(--orange);
+      }
+
+      .intro h2 {
+        margin-top: 20px;
+
+        font-size: clamp(40px, 4.5vw, 60px);
+
+        line-height: 1;
+
+        text-transform: uppercase;
+      }
+
+      .intro h2 span {
+        color: var(--orange-dark);
+      }
+
+      .intro-text {
+        margin-top: 25px;
+
+        color: #5e5e5e;
+
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .intro-text + .intro-text {
+        margin-top: 16px;
+      }
+
+      .founder {
+        margin-top: 32px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 15px;
+      }
+
+      .founder-line {
+        width: 45px;
+        height: 2px;
+
+        background: var(--black);
+      }
+
+      .founder strong {
+        font-family: "Montserrat", sans-serif;
+        font-size: 13px;
+      }
+
+      .stats {
+        padding: 70px 0;
+
+        background: var(--dark, #0e0c10);
+
+        color: white;
+      }
+
+      .stats-grid {
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .stat {
+        padding: 10px 30px;
+
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .stat:first-child {
+        border-left: none;
+      }
+
+      .stat-number {
+        font-family: "Montserrat", sans-serif;
+
+        color: var(--peach);
+
+        font-size: 47px;
+        font-weight: 800;
+      }
+
+      .stat-label {
+        margin-top: 7px;
+
+        color: #999;
+
+        font-size: 11px;
+        letter-spacing: 1.5px;
+      }
+
+      .mission {
+        padding: 120px 0;
+
+        background: var(--peach-light);
+      }
+
+      .center-heading {
+        max-width: 700px;
+
+        margin: auto;
+
+        text-align: center;
+      }
+
+      .center-heading .section-tag::before {
+        display: none;
+      }
+
+      .center-heading h2 {
+        margin-top: 20px;
+
+        font-size: 48px;
+
+        text-transform: uppercase;
+      }
+
+      .center-heading p {
+        margin-top: 20px;
+
+        color: #666;
+
+        font-size: 15px;
+
+        line-height: 1.8;
+      }
+
+      .mission-grid {
+        margin-top: 60px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 25px;
+      }
+
+      .mission-card {
+        position: relative;
+
+        min-height: 320px;
+
+        padding: 48px;
+
+        background: white;
+
+        overflow: hidden;
+
+        transition: 0.35s ease;
+      }
+
+      .mission-card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 20px 50px rgba(42, 16, 31, 0.1);
+      }
+
+      .mission-card::after {
+        content: "";
+
+        position: absolute;
+
+        right: -90px;
+        bottom: -90px;
+
+        width: 230px;
+        height: 230px;
+
+        border: 40px solid rgba(247, 196, 165, 0.35);
+
+        border-radius: 50%;
+      }
+
+      .mission-icon {
+        width: 58px;
+        height: 58px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: var(--black);
+        color: white;
+
+        border-radius: 50%;
+
+        font-size: 23px;
+      }
+
+      .mission-card h3 {
+        margin-top: 28px;
+
+        font-size: 27px;
+
+        text-transform: uppercase;
+      }
+
+      .mission-card p {
+        max-width: 500px;
+
+        margin-top: 15px;
+
+        color: #666;
+
+        font-size: 14px;
+
+        line-height: 1.8;
+      }
+
+      .values {
+        padding: 120px 0;
+
+        background: var(--maroon);
+
+        color: white;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .values::after {
+        content: "";
+
+        position: absolute;
+
+        width: 550px;
+        height: 550px;
+
+        border: 1px solid rgba(255, 255, 255, 0.07);
+
+        border-radius: 50%;
+
+        right: -230px;
+        top: -250px;
+      }
+
+      .values-heading {
+        display: grid;
+
+        grid-template-columns: 0.9fr 1.1fr;
+
+        gap: 80px;
+
+        align-items: end;
+      }
+
+      .values-heading .section-tag {
+        color: #aaa;
+      }
+
+      .values-heading h2 {
+        margin-top: 20px;
+
+        font-size: 48px;
+
+        text-transform: uppercase;
+      }
+
+      .values-heading p {
+        color: #cdbdc4;
+
+        font-size: 15px;
+
+        line-height: 1.8;
+      }
+
+      .values-grid {
+        margin-top: 65px;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 20px;
+      }
+
+      .value {
+        padding: 34px;
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        background: rgba(255, 255, 255, 0.025);
+
+        transition: 0.3s ease;
+      }
+
+      .value:hover {
+        background: rgba(255, 255, 255, 0.07);
+
+        transform: translateY(-6px);
+      }
+
+      .value-number {
+        color: var(--orange);
+
+        font-size: 12px;
+        font-weight: 700;
+
+        letter-spacing: 2px;
+      }
+
+      .value h3 {
+        margin-top: 24px;
+
+        font-size: 21px;
+      }
+
+      .value p {
+        margin-top: 13px;
+
+        color: #bbaab2;
+
+        font-size: 13px;
+
+        line-height: 1.8;
+      }
+
+      .why-us {
+        padding: 120px 0;
+
+        background: var(--cream);
+      }
+
+      .why-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 90px;
+
+        align-items: center;
+      }
+
+      .why-content h2 {
+        margin-top: 20px;
+
+        font-size: 47px;
+
+        text-transform: uppercase;
+      }
+
+      .why-content h2 span {
+        color: var(--orange-dark);
+      }
+
+      .why-content > p {
+        margin-top: 22px;
+
+        color: #666;
+
+        font-size: 14.5px;
+
+        line-height: 1.9;
+      }
+
+      .features {
+        margin-top: 30px;
+
+        display: grid;
+
+        gap: 18px;
+      }
+
+      .feature {
+        display: flex;
+
+        gap: 15px;
+      }
+
+      .feature-icon {
+        flex: 0 0 28px;
+
+        width: 28px;
+        height: 28px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: var(--black);
+
+        color: white;
+
+        border-radius: 50%;
+
+        font-size: 12px;
+      }
+
+      .feature h4 {
+        font-size: 14px;
+      }
+
+      .feature p {
+        margin-top: 4px;
+
+        color: #777;
+
+        font-size: 12px;
+
+        line-height: 1.6;
+      }
+
+      .why-image {
+        position: relative;
+      }
+
+      .why-image img {
+        height: 530px;
+
+        object-fit: cover;
+
+        border-radius: 5px;
+      }
+
+      .orange-box {
+        position: absolute;
+
+        left: -30px;
+        bottom: 30px;
+
+        padding: 25px;
+
+        width: 220px;
+
+        background: var(--orange);
+
+        color: var(--black);
+      }
+
+      .orange-box strong {
+        font-family: "Montserrat", sans-serif;
+
+        font-size: 25px;
+      }
+
+      .orange-box p {
+        margin-top: 5px;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+      }
+
+      .team {
+        padding: 120px 0;
+
+        background: #101012;
+
+        color: white;
+      }
+
+      .team-heading {
+        max-width: 700px;
+
+        margin: auto;
+
+        text-align: center;
+      }
+
+      .team-heading .section-tag {
+        color: #aaa;
+      }
+
+      .team-heading .section-tag::before {
+        display: none;
+      }
+
+      .team-heading h2 {
+        margin-top: 20px;
+
+        font-size: 47px;
+
+        text-transform: uppercase;
+      }
+
+      .team-heading p {
+        margin-top: 18px;
+
+        color: #999;
+
+        font-size: 14px;
+
+        line-height: 1.8;
+      }
+
+      .team-grid {
+        margin-top: 60px;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 25px;
+      }
+
+      .team-card {
+        background: #19181b;
+
+        transition: 0.35s ease;
+      }
+
+      .team-card:hover {
+        transform: translateY(-8px);
+      }
+
+      .team-image {
+        height: 370px;
+
+        overflow: hidden;
+      }
+
+      .team-image img {
+        height: 100%;
+
+        object-fit: cover;
+
+        transition: 0.5s ease;
+      }
+
+      .team-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .team-info {
+        padding: 25px 27px 30px;
+      }
+
+      .team-info h3 {
+        font-size: 21px;
+      }
+
+      .team-role {
+        margin-top: 6px;
+
+        color: var(--orange);
+
+        font-size: 10px;
+        font-weight: 700;
+
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .team-info p {
+        margin-top: 13px;
+
+        color: #999;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+      }
+
+      .cta {
+        position: relative;
+
+        padding: 120px 0;
+
+        color: white;
+
+        background:
+          linear-gradient(
+            100deg,
+            rgba(42, 16, 31, 0.98),
+            rgba(42, 16, 31, 0.75)
+          ),
+          url("https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=2000&q=90")
+            center/cover no-repeat;
+
+        overflow: hidden;
+      }
+
+      .cta::after {
+        content: "";
+
+        position: absolute;
+
+        width: 430px;
+        height: 430px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        right: -120px;
+        top: -160px;
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 2;
+
+        max-width: 750px;
+      }
+
+      .cta .section-tag {
+        color: #ddd;
+      }
+
+      .cta h2 {
+        margin-top: 20px;
+
+        font-size: clamp(42px, 5vw, 68px);
+
+        line-height: 0.98;
+
+        text-transform: uppercase;
+      }
+
+      .cta p {
+        max-width: 600px;
+
+        margin-top: 22px;
+
+        color: #ddd;
+
+        font-size: 15px;
+
+        line-height: 1.8;
+      }
+
+      .cta-button {
+        display: inline-flex;
+
+        margin-top: 35px;
+
+        padding: 15px 29px;
+
+        background: var(--orange);
+
+        color: var(--black);
+
+        font-size: 12px;
+        font-weight: 800;
+
+        transition: 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background: white;
+      }
+
+      .mountains {
+        width: 100%;
+        height: 180px;
+
+        display: block;
+
+        background: #101012;
+      }
+      footer {
+        padding: 27px 50px;
+
+        background: var(--black);
+
+        color: #777;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 11px;
+      }
+
+      .footer-brand {
+        color: white;
+
+        font-family: "Montserrat", sans-serif;
+
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      @media (max-width: 1050px) {
+        .container {
+          width: min(100% - 60px, var(--container));
+        }
+
+        .navbar {
+          padding: 25px 30px;
+        }
+
+        .nav {
+          gap: 20px;
+        }
+
+        .intro-grid,
+        .why-grid {
+          gap: 55px;
+        }
+
+        .values-heading {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .navbar {
+          position: relative;
+
+          padding: 20px 22px;
+
+          background: var(--cream);
+
+          flex-wrap: wrap;
+        }
+
+        .nav {
+          width: 100%;
+
+          order: 3;
+
+          justify-content: center;
+
+          flex-wrap: wrap;
+
+          gap: 15px;
+
+          font-size: 10px;
+        }
+
+        .nav-button {
+          padding: 10px 15px;
+        }
+
+        .hero {
+          min-height: 700px;
+
+          background:
+            linear-gradient(
+              rgba(255, 250, 246, 0.9),
+              rgba(255, 250, 246, 0.72)
+            ),
+            url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85")
+              center/cover no-repeat;
+        }
+
+        .hero-content {
+          padding-top: 30px;
+        }
+
+        .hero h1 {
+          font-size: 53px;
+          letter-spacing: -2px;
+        }
+
+        .hero-description {
+          font-size: 14px;
+        }
+
+        .hero-circle {
+          width: 270px;
+          height: 270px;
+
+          right: -60px;
+          top: 55%;
+        }
+
+        .birds {
+          display: none;
+        }
+
+        .hero-number {
+          font-size: 70px;
+          right: 20px;
+        }
+
+        .intro-grid,
+        .mission-grid,
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .intro,
+        .mission,
+        .values,
+        .why-us,
+        .team,
+        .cta {
+          padding: 80px 0;
+        }
+
+        .photo-frame img {
+          height: 420px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .stat {
+          padding: 20px;
+        }
+
+        .stat:nth-child(3) {
+          border-left: none;
+        }
+
+        .values-grid,
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-image {
+          height: 420px;
+        }
+
+        .why-image img {
+          height: 400px;
+        }
+
+        footer {
+          padding: 25px 22px;
+
+          flex-direction: column;
+
+          gap: 10px;
+
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: min(100% - 40px, var(--container));
+        }
+
+        .brand-mark {
+          width: 34px;
+        }
+
+        .brand-name {
+          font-size: 15px;
+        }
+
+        .brand-subtitle {
+          font-size: 7px;
+        }
+
+        .hero h1 {
+          font-size: 43px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+        }
+
+        .button-dark,
+        .button-outline {
+          width: 100%;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stat {
+          border-left: none;
+
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .stat:last-child {
+          border-bottom: none;
+        }
+
+        .center-heading h2,
+        .values-heading h2,
+        .why-content h2,
+        .team-heading h2 {
+          font-size: 36px;
+        }
+
+        .mission-card {
+          padding: 35px 28px;
+        }
+
+        .photo-label {
+          right: 10px;
+        }
+
+        .orange-box {
+          left: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <a href="index.html" class="brand">
+        <svg
+          class="brand-mark"
+          viewBox="0 0 60 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M14 4 L26 30 L2 30 Z" fill="#141414" />
+
+          <path d="M28 12 L44 30 L12 30 Z" fill="#141414" />
+        </svg>
+
+        <div>
+          <div class="brand-name">HIGH <strong>PEAKS</strong></div>
+
+          <div class="brand-subtitle">SPORTS AND NATURE</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="track.html"> HOME </a>
+
+        <a href="track_about.html" class="active"> ABOUT </a>
+
+        <a href="track_serv.html"> SERVICES </a>
+
+        <a href="track_f.html" class="nav-button"> BOOK NOW </a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-circle"></div>
+
+      <svg
+        class="birds"
+        viewBox="0 0 220 90"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M60 55 C70 45 85 45 95 52 C105 45 120 45 130 55 C120 52 108 55 95 62 C82 55 70 52 60 55Z"
+          fill="#141414"
+        />
+
+        <path
+          d="M120 20 C132 8 150 8 162 17 C174 8 192 8 204 20 C192 16 178 20 162 30 C146 20 132 16 120 20Z"
+          fill="#141414"
+        />
+      </svg>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">WHO WE ARE</div>
+
+          <h1>
+            About<br />
+            <span>High Peaks</span>
+          </h1>
+
+          <p class="hero-description">
+            We believe the mountains are more than destinations. They are places
+            where people discover courage, connection, freedom and unforgettable
+            moments.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#story" class="button-dark"> OUR STORY </a>
+
+            <a href="#mission" class="button-outline"> OUR MISSION </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-number">01</div>
+    </section>
+
+    <section class="intro" id="story">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="photo-frame">
+            <img
+              src="https://images.unsplash.com/photo-1521336575822-6da63fb45455?auto=format&fit=crop&w=1000&q=90"
+              alt="Mountain explorer"
+            />
+
+            <div class="photo-label">
+              <strong>15+</strong>
+              <span>YEARS OF EXPLORATION</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-tag">OUR STORY</div>
+
+            <h2>
+              Born From<br />
+              The <span>Mountains</span>
+            </h2>
+
+            <p class="intro-text">
+              High Peaks Sports and Nature started with a simple idea: create
+              outdoor experiences that allow people to step away from everyday
+              life and reconnect with the natural world.
+            </p>
+
+            <p class="intro-text">
+              What began as a passion for mountain exploration has grown into a
+              community of guides, adventurers, photographers and nature lovers
+              who share the same belief — every journey should mean something.
+            </p>
+
+            <p class="intro-text">
+              Today, we create carefully planned experiences ranging from
+              peaceful forest walks and family trips to challenging mountain
+              adventures.
+            </p>
+
+            <div class="founder">
+              <div class="founder-line"></div>
+
+              <strong> THE HIGH PEAKS TEAM </strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-number">15+</div>
+
+            <div class="stat-label">YEARS EXPERIENCE</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-number">50+</div>
+
+            <div class="stat-label">MOUNTAIN TRAILS</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-number">5K+</div>
+
+            <div class="stat-label">HAPPY EXPLORERS</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-number">20+</div>
+
+            <div class="stat-label">DESTINATIONS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission" id="mission">
+      <div class="container">
+        <div class="center-heading">
+          <div class="section-tag">WHAT DRIVES US</div>
+
+          <h2>Our Purpose</h2>
+
+          <p>
+            Adventure is not only about reaching the summit. It is about
+            everything that happens along the way.
+          </p>
+        </div>
+
+        <div class="mission-grid">
+          <article class="mission-card">
+            <div class="mission-icon">▲</div>
+
+            <h3>Our Mission</h3>
+
+            <p>
+              To create inspiring, safe and memorable outdoor experiences that
+              encourage people to explore, challenge themselves and develop a
+              deeper appreciation for nature.
+            </p>
+          </article>
+
+          <article class="mission-card">
+            <div class="mission-icon">◆</div>
+
+            <h3>Our Vision</h3>
+
+            <p>
+              To build a trusted outdoor community where adventure, responsible
+              tourism and respect for nature come together to create meaningful
+              journeys.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="container">
+        <div class="values-heading">
+          <div>
+            <div class="section-tag">WHAT WE BELIEVE</div>
+
+            <h2>
+              Our Core<br />
+              Values
+            </h2>
+          </div>
+
+          <p>
+            The principles behind every trail, trip and experience we create.
+            These values shape how we work, how we guide and how we interact
+            with the places we explore.
+          </p>
+        </div>
+
+        <div class="values-grid">
+          <article class="value">
+            <div class="value-number">01</div>
+
+            <h3>Adventure</h3>
+
+            <p>
+              We encourage curiosity and help people discover experiences
+              outside their everyday routine.
+            </p>
+          </article>
+
+          <article class="value">
+            <div class="value-number">02</div>
+
+            <h3>Nature</h3>
+
+            <p>
+              We respect the landscapes we explore and promote responsible
+              interaction with the natural world.
+            </p>
+          </article>
+
+          <article class="value">
+            <div class="value-number">03</div>
+
+            <h3>Community</h3>
+
+            <p>
+              We believe adventures become more meaningful when they are shared
+              with family, friends and new people.
+            </p>
+          </article>
+
+          <article class="value">
+            <div class="value-number">04</div>
+
+            <h3>Safety</h3>
+
+            <p>
+              Preparation, experienced guidance and responsible planning are at
+              the heart of every adventure.
+            </p>
+          </article>
+
+          <article class="value">
+            <div class="value-number">05</div>
+
+            <h3>Discovery</h3>
+
+            <p>
+              We are always searching for new trails, viewpoints and experiences
+              that inspire exploration.
+            </p>
+          </article>
+
+          <article class="value">
+            <div class="value-number">06</div>
+
+            <h3>Respect</h3>
+
+            <p>
+              We respect local communities, cultures, wildlife and the fragile
+              environments we visit.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-us">
+      <div class="container">
+        <div class="why-grid">
+          <div class="why-content">
+            <div class="section-tag">WHY HIGH PEAKS</div>
+
+            <h2>
+              More Than<br />
+              An <span>Adventure</span>
+            </h2>
+
+            <p>
+              We do not simply take you somewhere beautiful. We design
+              experiences around discovery, comfort, safety and authentic
+              connection with the outdoors.
+            </p>
+
+            <div class="features">
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+
+                <div>
+                  <h4>Experienced Guides</h4>
+
+                  <p>
+                    Knowledgeable outdoor professionals who understand the
+                    terrain and the journey.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+
+                <div>
+                  <h4>Carefully Planned Trips</h4>
+
+                  <p>
+                    Every route is planned around experience, comfort and
+                    responsible exploration.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+
+                <div>
+                  <h4>Responsible Tourism</h4>
+
+                  <p>
+                    We encourage exploration that respects nature and local
+                    communities.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-icon">✓</div>
+
+                <div>
+                  <h4>Experiences For Everyone</h4>
+
+                  <p>
+                    From relaxed family trips to challenging adventures, there
+                    is something for every explorer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-image">
+            <img
+              src="https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1200&q=90"
+              alt="Mountain adventure"
+            />
+
+            <div class="orange-box">
+              <strong> Explore More. </strong>
+
+              <p>
+                Go beyond ordinary travel and discover the places that stay with
+                you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="container">
+        <div class="team-heading">
+          <div class="section-tag">MEET THE TEAM</div>
+
+          <h2>
+            People Behind<br />
+            The Journey
+          </h2>
+
+          <p>
+            A passionate team of outdoor enthusiasts dedicated to helping you
+            experience the mountains differently.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=90"
+                alt="John Towner"
+              />
+            </div>
+
+            <div class="team-info">
+              <h3>John Towner</h3>
+
+              <div class="team-role">Senior Photographer</div>
+
+              <p>
+                Capturing landscapes, people and the quiet moments that make
+                every adventure memorable.
+              </p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=90"
+                alt="Lina Darja"
+              />
+            </div>
+
+            <div class="team-info">
+              <h3>Lina Darja</h3>
+
+              <div class="team-role">Mountain Guide</div>
+
+              <p>
+                Helping explorers discover beautiful trails while making every
+                journey comfortable and rewarding.
+              </p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-image">
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=90"
+                alt="Daniel Woods"
+              />
+            </div>
+
+            <div class="team-info">
+              <h3>Daniel Woods</h3>
+
+              <div class="team-role">Adventure Specialist</div>
+
+              <p>
+                Creating exciting experiences for explorers who want to
+                challenge themselves and go further.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-content">
+          <div class="section-tag">YOUR NEXT JOURNEY</div>
+
+          <h2>
+            The Mountains<br />
+            Are Calling.
+          </h2>
+
+          <p>
+            Whether you are planning a peaceful escape, a family adventure or a
+            challenging mountain experience, High Peaks is ready to help you
+            create a journey worth remembering.
+          </p>
+
+          <a href="#" class="cta-button"> BOOK YOUR ADVENTURE </a>
+        </div>
+      </div>
+    </section>
+
+    <svg
+      class="mountains"
+      viewBox="0 0 1400 180"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="
+        0,110
+        140,60
+        280,105
+        430,35
+        590,95
+        730,15
+        870,90
+        1010,45
+        1170,100
+        1300,60
+        1400,90
+        1400,180
+        0,180
+      "
+        fill="#141414"
+      />
+
+      <polygon
+        points="
+        0,145
+        170,105
+        350,140
+        520,95
+        700,135
+        880,90
+        1050,135
+        1220,105
+        1400,135
+        1400,180
+        0,180
+      "
+        fill="#0b0b0c"
+      />
+    </svg>
+
+    <footer>
+      <div class="footer-brand">HIGH PEAKS SPORTS AND NATURE</div>
+      <div>© 2026 High Peaks Sports and Nature. All rights reserved.</div>
+    </footer>
+  </body>
+</html>
